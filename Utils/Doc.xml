@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoreExtensions</name>
+    </assembly>
+    <members>
+        <member name="T:System.Core">
+            <name>Core</name>
+            <summary> A class containing basic core features</summary>
+        </member>
+        <member name="M:System.Core.SplitRange(System.Int32,System.Int32,System.Int32)">
+            <name>SplitRange</name>
+            <code>SplitRange(int min, int max, int divider)</code>
+            <param name="min">The inferiour boundry of the interval to split</param>
+            <param name="max">The superior boundry of the interval to split</param>
+            <param name="divider">The number of subintervals to compute</param>
+            <summary>Creates an even subdivision of the interval [min;max]</summary>
+            <returns>An array containing the boundries of the subdivision</returns>
+        </member>
+        <member name="M:System.Core.Range(System.Int32)">
+            <name>Range</name>
+            <code>Range(int limit)</code>
+            <param name="limit">The extreme value at which the sequence stops</param>
+            <summary>Generates a sequence from 0 to limit (excluded)</summary>
+            <returns>The sequence into a List object</returns>
+        </member>
+        <member name="M:System.Core.Range(System.Int32,System.Int32)">
+            <name>Range</name>
+            <code>Range(int start, int limit)</code>
+            <param name="start">The integer from which the sequence starts</param>
+            <param name="limit">The extreme value at which the sequence stops</param>
+            <summary>Generates a sequence from start to limit (excluded)</summary>
+            <returns>The sequence into a List object</returns>
+        </member>
+        <member name="M:System.Core.Range(System.Int32,System.Int32,System.Int32)">
+            <name>Range</name>
+            <code>Range(int start, int limit, int step)</code>
+            <param name="start">The integer from which the sequence starts</param>
+            <param name="limit">The extreme value at which the sequence stops</param>
+            <param name="step">The increment</param>
+            <summary>Generates a sequence from start to limit (excluded), incrementng by step</summary>
+            <returns>The sequence into a List object</returns>
+        </member>
+        <member name="T:System.NumericalStringComparer">
+            <name>NumericalStringComparer</name>
+            <summary>An IComparer class to compare to numerical strings</summary>
+        </member>
+        <member name="M:System.NumericalStringComparer.Compare(System.String,System.String)">
+            <name>Compare</name>
+            <returns><c>a.CompareNumerically(b);</c></returns>
+            <remarks>See the doc of the CompareNumerically
+            extension method for more details</remarks>
+        </member>
+        <member name="T:System.Linq.ListModules`1">
+            <name>ListModules Class</name>
+            <summary>
+            A static class containing various generic List utilities
+            </summary>
+            <typeparam name="T">The type of List object</typeparam>
+        </member>
+    </members>
+</doc>

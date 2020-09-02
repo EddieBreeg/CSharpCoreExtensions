@@ -8,9 +8,7 @@ namespace Tests
     {
         static void Main()
         {
-            string s = "foo12";
-            string s2 = "foo2";
-            Console.WriteLine(s.CompareNumerically(s2));
+            Console.WriteLine("\t\t\nA string to trim".TrimStart());
         }
     }
 }

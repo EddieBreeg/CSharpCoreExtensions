@@ -1,8 +1,14 @@
 ﻿using System.Collections.Generic;
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 namespace System.Linq
 {
+    /// <name>ListModules</name>
+    /// <summary>
+    /// A static class containing various generic List utilities
+    /// </summary>
+    /// <typeparam name="T">The type of List object</typeparam>
     public class ListModules<T>
     {
         public static List<List<T>> SplitList(List<T> lst, int count)
@@ -101,10 +107,7 @@ namespace System.Linq
     }
     public static class IntExtensions
     {
-        public static int Sign(this int x)
-        {
-            return x >= 0 ? 1 : -1;
-        }
-        public static int? Sign(this int? x) => x != null ? (x >= 0 ? 1 : -1) : 0;
+        public static int Sign(this int x) => Math.Sign(x);
+        public static int? Sign(this int? x) => x!=null?Math.Sign((int)x) : 0;
     }
 }

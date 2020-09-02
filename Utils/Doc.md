@@ -1,5 +1,4 @@
 # CoreExtensions
-CoreExtensions is a library which extends the core features of C#, using existing namespaces like System or System.Linq.
 
 ## Features List
 
@@ -14,7 +13,7 @@ CoreExtensions is a library which extends the core features of C#, using existin
 
 3. [System.Linq.ListModules`1](#listmodules-class)
 
-## Documentation
+## Doc
 
 ### Core
 A class containing basic core features
@@ -84,6 +83,6 @@ Remarks: See the doc of the CompareNumerically
 
 ### ListModules Class
 A static class containing various generic List utilities
+            
 
-
-- Type parameter T: The type of List object
+- Type parameter T: The type of List object 

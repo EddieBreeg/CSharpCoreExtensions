@@ -5,6 +5,29 @@
     <LangVersion>8.0</LangVersion>
     <RootNamespace>System</RootNamespace>
     <OutputType>Library</OutputType>
+    <PackageId>EddieBreeg.CoreExtensions</PackageId>
+    <Authors>EddieBreeg</Authors>
+    <Product>CoreExtensions</Product>
+    <Description>A crossplatform library provides you with various basic extensions to the core features of C#</Description>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/EddieBreeg/CSharpCoreExtensions</RepositoryUrl>
+    <NeutralLanguage>English</NeutralLanguage>
+    <PackageTags>Extensions, System, System.Linq</PackageTags>
+    <PackageReleaseNotes>Initial CoreExtensions release</PackageReleaseNotes>
+    <AssemblyName>CoreExtensions</AssemblyName>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>E:\Progra\C#\CoreExtension\Utils\Doc.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
