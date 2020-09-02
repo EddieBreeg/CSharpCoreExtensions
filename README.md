@@ -9,7 +9,7 @@ CoreExtensions is a library which extends the core features of C#, using existin
 
 2. [System.NumericalStringComparer](#numericalstringcomparer-class)
 
-3. [System.Linq.ListModules<T>](#listmodules<t>-class)
+3. [System.Linq.ListModules<T>](#listmodules-class)
 
 # Documentation
 
@@ -19,4 +19,4 @@ CoreExtensions is a library which extends the core features of C#, using existin
 
 ## NumericalStringComparer Class
 
-## ListModules<T> Class
+## ListModules Class
