@@ -18,13 +18,12 @@ namespace System
         public static int[] SplitRange(int min, int max, int divider)
         {
             var result = new int[divider * 2];
-            var range = max - min + 1;
-            for(int i=0; i<divider;i++)
-                result[2 * i] = min + range / divider * i + 1;
-            for (int i = 0; i < divider - 1; i++)
-                result[2 * i + 1] = result[2 * i + 2] - 1;
-            result[0] = min;
-            result[^1] = max;
+            var subs = Range(min, max + 1).Split(divider);
+            foreach(int i in Range(divider))
+            {
+                result[2 * i] = subs[i][0];
+                result[2 * i + 1] = subs[i][^1];
+            }
             return result;
         }
         /// <name>Range</name>

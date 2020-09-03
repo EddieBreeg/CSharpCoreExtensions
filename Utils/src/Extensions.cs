@@ -1,36 +1,35 @@
 ﻿using System.Collections.Generic;
-using System;
-using System.Reflection.Metadata.Ecma335;
 
 namespace System.Linq
 {
-    /// <name>ListModules</name>
+    /// <name>ListExtensions</name>
     /// <summary>
-    /// A static class containing various generic List utilities
+    /// A collection of extension methods for List objects
     /// </summary>
-    /// <typeparam name="T">The type of List object</typeparam>
-    public class ListModules<T>
+    public static class ListExtensions
     {
-        public static List<List<T>> SplitList(List<T> lst, int count)
+        /// <name>SplitList</name>
+        /// <code>SplitList(List lst, int count)</code>
+        /// <summary>
+        /// Splits the list into `count` sublists
+        /// </summary>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static List<List<T>> Split<T>(this List<T> lst, int count)
         {
             var result = new List<List<T>>();
             for (int i = 0; i < count; i++)
                 result.Add(lst.GetRange(i * lst.Count / count, lst.Count / count));
+            if (!result[^1].Contains(lst[^1])) result[^1].Add(lst[^1]);
             return result;
         }
-        public static List<T> Sorted(List<T> lst)
-        {
-            var result = DeepCopy(lst);
-            result.Sort();
-            return result;
-        }
-        public static List<T> DeepCopy(List<T> lst)
+        public static List<T> DeepCopy<T>(this List<T> lst)
         {
             var result = new List<T>();
             lst.ForEach(x => result.Add(x));
             return result;
         }
-        public static List<T> WithoutIndex(List<T> lst, int index)
+        public static List<T> WithoutIndex<T>(this List<T> lst, int index)
         {
             var result = new List<T>();
             for (int i = 0; i < lst.Count; i++)
@@ -38,20 +37,23 @@ namespace System.Linq
                     result.Add(lst[i]);
             return result;
         }
-        public static List<T> Permute(List<T> lst, List<int> lut)
+        public static List<T> Sorted<T>(this List<T> lst)
         {
-            if (lst.Count != lut.Count || !lut.IsPermutation()) throw new ArgumentException();
-            return lut.Select(x => lst[x]).ToList();
+            var result = DeepCopy(lst);
+            result.Sort();
+            return result;
         }
-    }
-    public static class ListExtensions
-    {
         public static bool IsPermutation(this List<int> lst)
         {
-            var copy = ListModules<int>.Sorted(lst);
+            var copy = lst.Sorted();
             for (int i = 0; i < copy.Count; i++)
                 if (copy[i] != i) return false;
             return true;
+        }
+        public static List<T> Permute<T>(this List<T> lst, List<int> lut)
+        {
+            if (lst.Count != lut.Count || !lut.IsPermutation()) throw new ArgumentException();
+            return lut.Select(x => lst[x]).ToList();
         }
         public static List<int> FlipPermutation(this List<int> lut)
         {

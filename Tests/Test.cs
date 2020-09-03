@@ -8,7 +8,7 @@ namespace Tests
     {
         static void Main()
         {
-            Console.WriteLine("\t\t\nA string to trim".TrimStart());
+            foreach (int x in Core.SplitRange(0, 99, 3)) Console.WriteLine(x);
         }
     }
 }

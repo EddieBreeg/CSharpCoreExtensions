@@ -51,12 +51,102 @@
             <remarks>See the doc of the CompareNumerically
             extension method for more details</remarks>
         </member>
-        <member name="T:System.Linq.ListModules`1">
-            <name>ListModules Class</name>
+        <member name="T:System.Linq.ListExtensions">
+            <name>ListExtensions</name>
             <summary>
-            A static class containing various generic List utilities
+            A collection of extension methods for List objects
             </summary>
-            <typeparam name="T">The type of List object</typeparam>
+        </member>
+        <member name="M:System.Linq.ListExtensions.Split``1(System.Collections.Generic.List{``0},System.Int32)">
+            <name>SplitList</name>
+            <code>SplitList(List lst, int count)</code>
+            <summary>
+            Splits the list into `count` sublists
+            </summary>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="T:System.InputHandler">
+            <name>InputHandler</name>
+            <summary>
+            A static class which contains useful methods to handle user inputs
+            </summary>
+        </member>
+        <member name="M:System.InputHandler.KeyInput(System.String,System.Char)">
+            <name>KeyInput</name>
+            <code>KeyInput(string str, char[] choices, char defaultValue)</code>
+            <summary>
+            Prompts the user to press a key
+            </summary>
+            <param name="str">The string to print out</param>
+            <param name="defaultValue">Defines what will be returned if the user presses Enter</param>
+            <returns>A char object representing the key</returns>
+        </member>
+        <member name="M:System.InputHandler.KeyInput(System.String,System.Char[],System.Char)">
+            <name>KeyInput</name>
+            <code>KeyInput(string str, char[] choices, char defaultValue='\0')</code>
+            Lets the user choose a key between some default values
+            <param name="choices">The different options the user can choose from</param>
+        </member>
+        <member name="M:System.InputHandler.LineInput(System.String,System.String)">
+            <name>LineInput</name>
+            <code>LineInput(string str, string defaultValue = "")</code>
+            <summary>
+            Prompts the user to enter a string of text
+            </summary>
+            <param name="str">The string to print out</param>
+            <param name="defaultValue">The value to return if the user hits enter</param>
+            <returns>The string entered by the user</returns>
+        </member>
+        <member name="M:System.InputHandler.LineInput(System.String,System.String[],System.String)">
+            <name>LineInput</name>
+            <code>LineInput(string str, string[] choices, string defaultValue)</code>
+            <summary>Lets the user choose a string from a set of default values</summary>
+            <param name="choices">An array containing the options the user can choose from</param>
+        </member>
+        <member name="M:System.InputHandler.IntInput(System.String,System.Int32)">
+            <name>IntInput</name>
+            <code>IntInput(string str, int defaultValue = 0)</code>
+            <summary>
+            Prompts the user to enter an integer
+            </summary>
+            <param name="str">The string to print out</param>
+            <param name="defaultValue">What the function returns if the user hits Enter</param>
+            <returns>The integer the user entered</returns>
+        </member>
+        <member name="M:System.InputHandler.DoubleInput(System.String,System.Double)">
+            <name>DoubleInput</name>
+            <code>IntInput(string str, int defaultValue = 0)</code>
+            <summary>
+            Prompts the user to enter a double
+            </summary>
+            <param name="str">The string to print out</param>
+            <param name="defaultValue">What the function returns if the user hits Enter</param>
+            <returns>The double the user entered</returns>
+        </member>
+        <member name="M:System.InputHandler.ListInput(System.String,System.Collections.Generic.List{System.String},System.Func{System.Collections.Generic.List{System.String},System.Boolean})">
+            <name>ListInput</name>
+            <code>ListInput(string str, List defaultValue = null, Func condition = null)</code>
+            <summary>
+            Prompts the user to enter a list of text strings
+            </summary>
+            <param name="str">The string to print out</param>
+            <param name="defaultValue">The list to return if the user hits Enter</param>
+            <param name="condition">The condition the resulting list must satisfy</param>
+            <returns>The user input as a List object</returns>
+            <remarks>The values entered by the user should be separated by a ' '</remarks>
+        </member>
+        <member name="M:System.InputHandler.IntListInput(System.String,System.Collections.Generic.List{System.Int32},System.Func{System.Collections.Generic.List{System.Int32},System.Boolean})">
+            <name>IntListInput</name>
+            <code>IntListInput(string str, List defaultValue = null, Func condition = null)</code>
+            <summary>
+            Prompts the user to enter a list of integers
+            </summary>
+            <param name="str">The string to print out</param>
+            <param name="defaultValue">The list to return if the user hits Enter</param>
+            <param name="condition">The condition the resulting list must satisfy</param>
+            <returns>The user input as a List object</returns>
+            <remarks>The values entered by the user should be separated by a ' '</remarks>
         </member>
     </members>
 </doc>
