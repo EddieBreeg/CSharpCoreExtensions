@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Tests
@@ -128,6 +127,39 @@ namespace Tests
             var lst = new List<char>() { 'a', 'b', 'c' };
             Assert.Throws<FormatException>(() => lst.Permute(lut));
         }
+        [Fact]
+        static void Permute3()
+        {
+            var lst = new List<char>() { 'a', 'b', 'c' };
+            var lut = new List<int>() { 0, 1, 2, 3 }; //lut isn't the same length as lst
+            Assert.Throws<FormatException>(() => lst.Permute(lut));
+        }
+        [Fact]
+        static void FlipPermutation()
+        {
+            var lut = new List<int>() { 0, 4, 5 };
+            Assert.Throws<FormatException>(()=>lut.FlipPermutation());
+        }
+        [Fact]
+        static void FlipPermutation2()
+        {
+            var lut = new List<int>() { 0, 2, 1, 3 };
+            Assert.Equal(lut.FlipPermutation(), new List<int>() { 0, 1, 2, 3 });
+        }
+        [Fact]
+        static void CompareArrays1()
+        {
+            int[] a = new int[] { 0, 1, 2 };
+            Assert.Equal(a.CompareTo(new int[] { 0, 1, 3 }), -1);
+        }
+        [Fact]
+        static void CompareArrays2()
+        {
+            var a = new int[] { 0, 1, 2, 3 };
+            Assert.Equal(a.CompareTo(new int[] { 0, 1, 2, 3, 4 }), -1);
+        }
+        [Fact]
+        static void FindNumbers() => Assert.Equal("25foo1".FindNumbers(), new int[] { 25, 1 });
     }
     public class DeepCopyTest
     {

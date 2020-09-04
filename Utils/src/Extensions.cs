@@ -67,14 +67,15 @@ namespace System.Linq
     }
     public static class StringExtensions
     {
-        public static List<int> FindNumbers(this string str)
+        public static int[] FindNumbers(this string str)
         {
             var copy = "";
             var digits = "0123456789";
             foreach (char c in str)
                 copy += digits.Contains(c) ? c : ' ';
-            var result = new List<int>();
-            return copy.Split(' ').Select(x => Convert.ToInt32(x)).ToList();
+            while (copy.Contains("  "))
+                copy = copy.Replace("  ", " ");
+            return copy.Split(' ').Select(x => Convert.ToInt32(x)).ToArray();
         }
         internal static IEnumerable<int> ToIntEnumerable(this string s)
         {
