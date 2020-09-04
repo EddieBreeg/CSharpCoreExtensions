@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace System.Linq
 {
@@ -14,6 +16,7 @@ namespace System.Linq
         /// Splits the list into `count` sublists
         /// </summary>
         /// <param name="count"></param>
+        /// <param name="lst">The list object to split</param>
         /// <returns></returns>
         public static List<List<T>> Split<T>(this List<T> lst, int count)
         {
@@ -23,23 +26,17 @@ namespace System.Linq
             if (!result[^1].Contains(lst[^1])) result[^1].Add(lst[^1]);
             return result;
         }
-        public static List<T> DeepCopy<T>(this List<T> lst)
-        {
-            var result = new List<T>();
-            lst.ForEach(x => result.Add(x));
-            return result;
-        }
         public static List<T> WithoutIndex<T>(this List<T> lst, int index)
         {
+            if (index > lst.Count) throw new IndexOutOfRangeException($"Index {index} doesn't exist in the list");
             var result = new List<T>();
             for (int i = 0; i < lst.Count; i++)
-                if (i != index)
-                    result.Add(lst[i]);
+                if (i != index) result.Add(lst[i]);
             return result;
         }
-        public static List<T> Sorted<T>(this List<T> lst)
+        public static List<T> Sorted<T>(this List<T> lst, IComparer<T> comparer=null)
         {
-            var result = DeepCopy(lst);
+            var result = lst.DeepCopy();
             result.Sort();
             return result;
         }
@@ -52,7 +49,7 @@ namespace System.Linq
         }
         public static List<T> Permute<T>(this List<T> lst, List<int> lut)
         {
-            if (lst.Count != lut.Count || !lut.IsPermutation()) throw new ArgumentException();
+            if (lst.Count != lut.Count || !lut.IsPermutation()) throw new FormatException();
             return lut.Select(x => lst[x]).ToList();
         }
         public static List<int> FlipPermutation(this List<int> lut)
@@ -111,5 +108,18 @@ namespace System.Linq
     {
         public static int Sign(this int x) => Math.Sign(x);
         public static int? Sign(this int? x) => x!=null?Math.Sign((int)x) : 0;
+    }
+    public static class ObjectExtensions
+    {
+        public static T DeepCopy<T>(this T obj)
+        {
+            using(var stream = new MemoryStream())
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(stream, obj);
+                stream.Position = 0;
+                return (T)formatter.Deserialize(stream);
+            }
+        }
     }
 }

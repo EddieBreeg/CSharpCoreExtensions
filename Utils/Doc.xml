@@ -64,6 +64,7 @@
             Splits the list into `count` sublists
             </summary>
             <param name="count"></param>
+            <param name="lst">The list object to split</param>
             <returns></returns>
         </member>
         <member name="T:System.InputHandler">
