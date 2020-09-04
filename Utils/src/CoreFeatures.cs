@@ -34,7 +34,7 @@ namespace System
         public static List<int> Range(int limit)
         {
             var seq = new List<int>();
-            for (int i = 0; i != limit; i += limit.Sign()) seq.Add(i);
+            for (int i = 0; i != limit; i += Math.Sign(limit)) seq.Add(i);
             return seq;
         }
         /// <name>Range</name>
@@ -46,7 +46,7 @@ namespace System
         public static List<int> Range(int start, int limit)
         {
             var seq = new List<int>();
-            for (int i = start; i != limit; i += limit.Sign()) seq.Add(i);
+            for (int i = start; i != limit; i += Math.Sign(limit)) seq.Add(i);
             return seq;
         }
         /// <name>Range</name>
@@ -59,9 +59,9 @@ namespace System
         public static List<int> Range(int start, int limit, int step)
         {
             var seq = new List<int>();
-            if (step.Sign() == (limit - start).Sign())
+            if (Math.Sign(step) == Math.Sign(limit - start))
             {
-                for (int i = start; (limit - i).Sign() == (limit - start).Sign(); i += step)
+                for (int i = start; Math.Sign(limit - i) == Math.Sign(limit - start); i += step)
                     seq.Add(i);
             }
             return seq;

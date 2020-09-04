@@ -51,21 +51,132 @@
             <remarks>See the doc of the CompareNumerically
             extension method for more details</remarks>
         </member>
-        <member name="T:System.Linq.ListExtensions">
+        <member name="T:System.Linq.EnumerableExtensions">
             <name>ListExtensions</name>
             <summary>
             A collection of extension methods for List objects
             </summary>
         </member>
-        <member name="M:System.Linq.ListExtensions.Split``1(System.Collections.Generic.List{``0},System.Int32)">
-            <name>SplitList</name>
-            <code>SplitList(List lst, int count)</code>
+        <member name="M:System.Linq.EnumerableExtensions.Split``1(System.Collections.Generic.List{``0},System.Int32)">
+            <name>Split</name>
+            <code>Split(List lst, int count)</code>
             <summary>
             Splits the list into `count` sublists
             </summary>
-            <param name="count"></param>
+            <param name="count">The number of sublists to create</param>
             <param name="lst">The list object to split</param>
             <returns></returns>
+        </member>
+        <member name="M:System.Linq.EnumerableExtensions.WithoutIndex``1(System.Collections.Generic.List{``0},System.Int32)">
+            <name>WithoutIndex</name>
+            <code>
+            WithoutIndex(this List lst, int index)
+            </code>
+            <summary>
+            Generates a version of the list without item at `index` 
+            </summary>
+            <typeparam name="T">The type of List object</typeparam>
+            <param name="lst">The List to remove the item from</param>
+            <param name="index">The index of the item to remove</param>
+            <returns>`lst` in which item at `index` has been removed</returns>
+        </member>
+        <member name="M:System.Linq.EnumerableExtensions.Sorted``1(System.Collections.Generic.List{``0},System.Collections.Generic.IComparer{``0})">
+            <name>Sorted</name>
+            <code>Sorted(this List lst, IComparer comparer=null)</code>
+            <summary>
+            Returns the sorted version of `lst` using either the default comparer, or the comparer passed as an argument
+            </summary>
+            <param name="lst">The List to sort</param>
+            <param name="comparer">IComparer object for the sort algorithm to use</param>
+            <returns>The sorted version of `lst`</returns>
+        </member>
+        <member name="M:System.Linq.EnumerableExtensions.IsPermutation(System.Collections.Generic.List{System.Int32})">
+            <name>IsPermutation</name>
+            <code>IsPermutation(this List lst)</code>
+            <summary>
+            Tests if `lst` represents a mathematical permutation of the integers from 0 to `lst.Count-1`
+            </summary>
+            <param name="lst">The List of integers to test</param>
+            <example>{1, 2, 0, 4, 3} is a permutation, but {2,3,1} and {1,2,4} are not</example>
+            <returns>The boolean result of the test</returns>
+        </member>
+        <member name="M:System.Linq.EnumerableExtensions.Permute``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{System.Int32})">
+            <name>Permute</name>
+            <code>List Permute(this List lst, List lut)</code>
+            <summary>
+            Applies the permutation represented by `lut` to `lst`
+            </summary>
+            <typeparam name="T">The type of the List to permute</typeparam>
+            <param name="lst">The List to permute</param>
+            <param name="lut">The lookup table to use for the permutation</param>
+            <returns>The permuted version of the list</returns>
+            <remarks>If `lut.IsPermutation!=true || lut.Count != lst.Count`, a FormatException will be thrown</remarks>
+        </member>
+        <member name="M:System.Linq.EnumerableExtensions.FlipPermutation(System.Collections.Generic.List{System.Int32})">
+            <name>FlipPermutation</name>
+            <code>FlipPermutation(this List lut)</code>
+            <summary>
+            Flips the permutation represented by `lut` 
+            (which corresponds to doing `lut.Permute(lut)`
+            </summary>
+            <param name="lut">The List object representing the permutation</param>
+            <returns>The flipped version of `lut`</returns>
+            <remarks>If `lut.IsPermutation == false`, a FormatException will be thrown</remarks>
+        </member>
+        <member name="T:System.Linq.StringExtensions">
+            <name>StringExtensions</name>
+            <summary>
+            A collection of extension methods for string objects
+            </summary>
+        </member>
+        <member name="M:System.Linq.StringExtensions.FindNumbers(System.String)">
+            <name>FindNumbers</name>
+            <code>FindNumbers(this string str)</code>
+            <summary>
+            Searches all the numrical values in `str`
+            </summary>
+            <param name="str">The string to search in</param>
+            <returns>An int[] containing all the values</returns>
+        </member>
+        <member name="M:System.Linq.StringExtensions.ToIntEnumerable(System.String)">
+            <name>ToIntEnumerable</name>
+            <code>ToIntEnumerable(this string s)</code>
+            <summary>
+            Converts the string to a set of integers by converting each char to its numerical value 
+            and evaluating any potential number
+            </summary>
+            <example>"foo1".ToIntEnumerable() = {102, 111, 111, 1}</example>
+            <param name="s">The string to iterate through</param>
+            <returns>An IEnumerable object generating the values</returns>
+            <remarks>This method is internal and shouldn't be used directly. It is only there to be used by the 
+            CompareNumerically method</remarks>
+        </member>
+        <member name="M:System.Linq.StringExtensions.CompareNumerically(System.String,System.String)">
+            <name>CompareNumerically</name>
+            <code>CompareNumerically(this string str, string other)</code>
+            <summary>
+            Compares strings which might contain numbers and returns an indication of their relative values
+            </summary>
+            <param name="str">This instance</param>
+            <param name="other">The string to compare to</param>
+            <returns>A signed integer indicating the relative values of `this` and `other`:
+            -1 if `this` is smaller than `other`, 1 if `this` is greater than `other`, 0 if they're equal</returns>
+        </member>
+        <member name="T:System.Linq.ObjectExtensions">
+            <name>ObjectExtensions</name>
+            <summary>
+            A collection of extension methods for any type of object
+            </summary>
+        </member>
+        <member name="M:System.Linq.ObjectExtensions.DeepCopy``1(``0)">
+            <name>DeepCopy(this T obj)</name>
+            <summary>
+            Creates a copy of `obj`
+            </summary>
+            <typeparam name="T">The actual type of `obj`</typeparam>
+            <param name="obj">The object to be copied</param>
+            <returns>A `T` object copy of `obj`</returns>
+            <remarks>The `T` class has to be marked as [Serializable] for this function to work</remarks>
         </member>
         <member name="T:System.InputHandler">
             <name>InputHandler</name>
@@ -75,7 +186,7 @@
         </member>
         <member name="M:System.InputHandler.KeyInput(System.String,System.Char)">
             <name>KeyInput</name>
-            <code>KeyInput(string str, char[] choices, char defaultValue)</code>
+            <code>KeyInput(string str, char defaultValue)</code>
             <summary>
             Prompts the user to press a key
             </summary>
@@ -87,6 +198,7 @@
             <name>KeyInput</name>
             <code>KeyInput(string str, char[] choices, char defaultValue='\0')</code>
             Lets the user choose a key between some default values
+            <param name="str">The string to print out</param>
             <param name="choices">The different options the user can choose from</param>
         </member>
         <member name="M:System.InputHandler.LineInput(System.String,System.String)">
@@ -103,7 +215,10 @@
             <name>LineInput</name>
             <code>LineInput(string str, string[] choices, string defaultValue)</code>
             <summary>Lets the user choose a string from a set of default values</summary>
+            <param name="str">The string to print out</param>
             <param name="choices">An array containing the options the user can choose from</param>
+            <param name="defaultValue">The value to return if the user hits Enter</param>
+            <returns>The string entered by the user</returns>
         </member>
         <member name="M:System.InputHandler.IntInput(System.String,System.Int32)">
             <name>IntInput</name>

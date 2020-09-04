@@ -11,7 +11,7 @@ namespace System
     public static class InputHandler
     {
         /// <name>KeyInput</name>
-        /// <code>KeyInput(string str, char[] choices, char defaultValue)</code>
+        /// <code>KeyInput(string str, char defaultValue)</code>
         /// <summary>
         /// Prompts the user to press a key
         /// </summary>
@@ -27,6 +27,7 @@ namespace System
         /// <name>KeyInput</name>
         /// <code>KeyInput(string str, char[] choices, char defaultValue='\0')</code>
         /// Lets the user choose a key between some default values
+        /// <param name="str">The string to print out</param>
         /// <param name="choices">The different options the user can choose from</param>
         public static char KeyInput(string str, char[] choices, char defaultValue='\0')
         {
@@ -55,7 +56,10 @@ namespace System
         /// <name>LineInput</name>
         /// <code>LineInput(string str, string[] choices, string defaultValue)</code>
         /// <summary>Lets the user choose a string from a set of default values</summary>
+        /// <param name="str">The string to print out</param>
         /// <param name="choices">An array containing the options the user can choose from</param>
+        /// <param name="defaultValue">The value to return if the user hits Enter</param>
+        /// <returns>The string entered by the user</returns>
         public static string LineInput(string str, string[] choices, string defaultValue)
         {
             Console.Write(str);
