@@ -82,7 +82,7 @@ namespace System
         /// <param name="str">The string to print out</param>
         /// <param name="defaultValue">What the function returns if the user hits Enter</param>
         /// <returns>The integer the user entered</returns>
-        public static int IntInput(string str, int defaultValue = 0) => Convert.ToInt32(DoubleInput(str, defaultValue));
+        public static int IntInput(string str, int? defaultValue = null) => Convert.ToInt32(DoubleInput(str, defaultValue));
         /// <name>DoubleInput</name>
         /// <code>IntInput(string str, int defaultValue = 0)</code>
         /// <summary>
@@ -91,11 +91,11 @@ namespace System
         /// <param name="str">The string to print out</param>
         /// <param name="defaultValue">What the function returns if the user hits Enter</param>
         /// <returns>The double the user entered</returns>
-        public static double DoubleInput(string str, double defaultValue = 0)
+        public static double DoubleInput(string str, double? defaultValue = null)
         {
             Console.Write(str);
             var input = Console.ReadLine();
-            if (input == "") return defaultValue;
+            if (input == string.Empty && defaultValue != null) return (double)defaultValue;
             try
             {
                 return Convert.ToDouble(input);

@@ -22,7 +22,7 @@
             <code>Range(int limit)</code>
             <param name="limit">The extreme value at which the sequence stops</param>
             <summary>Generates a sequence from 0 to limit (excluded)</summary>
-            <returns>The sequence into a List object</returns>
+            <returns>The sequence into a IEnumerable object</returns>
         </member>
         <member name="M:System.Core.Range(System.Int32,System.Int32)">
             <name>Range</name>
@@ -30,7 +30,7 @@
             <param name="start">The integer from which the sequence starts</param>
             <param name="limit">The extreme value at which the sequence stops</param>
             <summary>Generates a sequence from start to limit (excluded)</summary>
-            <returns>The sequence into a List object</returns>
+            <returns>The sequence into a IEnumerable object</returns>
         </member>
         <member name="M:System.Core.Range(System.Int32,System.Int32,System.Int32)">
             <name>Range</name>
@@ -39,7 +39,7 @@
             <param name="limit">The extreme value at which the sequence stops</param>
             <param name="step">The increment</param>
             <summary>Generates a sequence from start to limit (excluded), incrementng by step</summary>
-            <returns>The sequence into a List object</returns>
+            <returns>The sequence into a IEnumerable object</returns>
         </member>
         <member name="T:System.NumericalStringComparer">
             <name>NumericalStringComparer</name>
@@ -122,6 +122,17 @@
             <param name="lut">The List object representing the permutation</param>
             <returns>The flipped version of `lut`</returns>
             <remarks>If `lut.IsPermutation == false`, a FormatException will be thrown</remarks>
+        </member>
+        <member name="M:System.Linq.EnumerableExtensions.CompareTo(System.Int32[],System.Int32[])">
+            <name>CompareTo</name>
+            <code>CompareTo(this int[] a, int[] b)</code>
+            <summary>
+            Compares to int[] value by value
+            </summary>
+            <param name="a">This instance</param>
+            <param name="b">The other int[] to compare `this` to</param>
+            <returns>An integer indicating the relative values of `a` and `b`:
+            -1 if ais less than b, 1 if a is greater than b, 0 if a is equal to b</returns>
         </member>
         <member name="T:System.Linq.StringExtensions">
             <name>StringExtensions</name>
@@ -220,7 +231,7 @@
             <param name="defaultValue">The value to return if the user hits Enter</param>
             <returns>The string entered by the user</returns>
         </member>
-        <member name="M:System.InputHandler.IntInput(System.String,System.Int32)">
+        <member name="M:System.InputHandler.IntInput(System.String,System.Nullable{System.Int32})">
             <name>IntInput</name>
             <code>IntInput(string str, int defaultValue = 0)</code>
             <summary>
@@ -230,7 +241,7 @@
             <param name="defaultValue">What the function returns if the user hits Enter</param>
             <returns>The integer the user entered</returns>
         </member>
-        <member name="M:System.InputHandler.DoubleInput(System.String,System.Double)">
+        <member name="M:System.InputHandler.DoubleInput(System.String,System.Nullable{System.Double})">
             <name>DoubleInput</name>
             <code>IntInput(string str, int defaultValue = 0)</code>
             <summary>

@@ -21,6 +21,7 @@ CoreExtensions is a library which extends the core features of C#, using existin
 - [System.Linq.EnumerableExtensions.IsPermutation(System.Collections.Generic.List{System.Int32})](#ispermutation)
 - [System.Linq.EnumerableExtensions.Permute``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{System.Int32})](#permute)
 - [System.Linq.EnumerableExtensions.FlipPermutation(System.Collections.Generic.List{System.Int32})](#flippermutation)
+- [System.Linq.EnumerableExtensions.CompareTo(System.Int32[],System.Int32[])](#compareto)
 
 4. [System.Linq.StringExtensions](#stringextensions)
 - [System.Linq.StringExtensions.FindNumbers(System.String)](#findnumbers)
@@ -35,8 +36,8 @@ CoreExtensions is a library which extends the core features of C#, using existin
 - [System.InputHandler.KeyInput(System.String,System.Char[],System.Char)](#keyinput)
 - [System.InputHandler.LineInput(System.String,System.String)](#lineinput)
 - [System.InputHandler.LineInput(System.String,System.String[],System.String)](#lineinput)
-- [System.InputHandler.IntInput(System.String,System.Int32)](#intinput)
-- [System.InputHandler.DoubleInput(System.String,System.Double)](#doubleinput)
+- [System.InputHandler.IntInput(System.String,System.Nullable{System.Int32})](#intinput)
+- [System.InputHandler.DoubleInput(System.String,System.Nullable{System.Double})](#doubleinput)
 - [System.InputHandler.ListInput(System.String,System.Collections.Generic.List{System.String},System.Func{System.Collections.Generic.List{System.String},System.Boolean})](#listinput)
 - [System.InputHandler.IntListInput(System.String,System.Collections.Generic.List{System.Int32},System.Func{System.Collections.Generic.List{System.Int32},System.Boolean})](#intlistinput)
 
@@ -71,7 +72,7 @@ Range(int limit)
 Generates a sequence from 0 to limit (excluded)
 
 
-Returns: The sequence into a List object
+Returns: The sequence into a IEnumerable object
 
 ### *Range*
 ```csharp
@@ -84,7 +85,7 @@ Range(int start, int limit)
 Generates a sequence from start to limit (excluded)
 
 
-Returns: The sequence into a List object
+Returns: The sequence into a IEnumerable object
 
 ### *Range*
 ```csharp
@@ -99,7 +100,7 @@ Range(int start, int limit, int step)
 Generates a sequence from start to limit (excluded), incrementng by step
 
 
-Returns: The sequence into a List object
+Returns: The sequence into a IEnumerable object
 
 ### *NumericalStringComparer*
 An IComparer class to compare to numerical strings
@@ -198,6 +199,20 @@ Flips the permutation represented by `lut`
 Returns: The flipped version of `lut`
 
 Remarks: If `lut.IsPermutation == false`, a FormatException will be thrown
+
+### *CompareTo*
+```csharp
+CompareTo(this int[] a, int[] b)
+```
+Compares to int[] value by value
+
+- a: This instance
+
+- b: The other int[] to compare `this` to
+
+
+Returns: An integer indicating the relative values of `a` and `b`:
+            -1 if ais less than b, 1 if a is greater than b, 0 if a is equal to b
 
 ### *StringExtensions*
 A collection of extension methods for string objects

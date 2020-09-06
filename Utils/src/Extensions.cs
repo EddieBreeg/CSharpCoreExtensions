@@ -103,6 +103,15 @@ namespace System.Linq
             if (!lut.IsPermutation()) throw new FormatException("List is not a permutation");
             return lut.Select(x => lut[x]).ToList();
         }
+        /// <name>CompareTo</name>
+        /// <code>CompareTo(this int[] a, int[] b)</code>
+        /// <summary>
+        /// Compares to int[] value by value
+        /// </summary>
+        /// <param name="a">This instance</param>
+        /// <param name="b">The other int[] to compare `this` to</param>
+        /// <returns>An integer indicating the relative values of `a` and `b`:
+        /// -1 if ais less than b, 1 if a is greater than b, 0 if a is equal to b</returns>
         public static int CompareTo(this int[] a, int[] b)
         {
             var range = a.Length < b.Length ? a.Length : b.Length;
@@ -110,6 +119,7 @@ namespace System.Linq
                 if (a[i] != b[i]) return a[i].CompareTo(b[i]);
             return a.Length.CompareTo(b.Length);
         }
+
     }
     /// <name>StringExtensions</name>
     /// <summary>

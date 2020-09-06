@@ -18,7 +18,7 @@ namespace System
         public static int[] SplitRange(int min, int max, int divider)
         {
             var result = new int[divider * 2];
-            var subs = Range(min, max + 1).Split(divider);
+            var subs = Range(min, max + 1).ToList().Split(divider);
             foreach(int i in Range(divider))
             {
                 result[2 * i] = subs[i][0];
@@ -30,41 +30,30 @@ namespace System
         /// <code>Range(int limit)</code>
         /// <param name="limit">The extreme value at which the sequence stops</param>
         /// <summary>Generates a sequence from 0 to limit (excluded)</summary>
-        /// <returns>The sequence into a List object</returns>
-        public static List<int> Range(int limit)
-        {
-            var seq = new List<int>();
-            for (int i = 0; i != limit; i += Math.Sign(limit)) seq.Add(i);
-            return seq;
-        }
+        /// <returns>The sequence into a IEnumerable object</returns>
+        public static IEnumerable<int> Range(int limit) => Range(0, limit, Math.Sign(limit));
         /// <name>Range</name>
         /// <code>Range(int start, int limit)</code>
         /// <param name="start">The integer from which the sequence starts</param>
         /// <param name="limit">The extreme value at which the sequence stops</param>
         /// <summary>Generates a sequence from start to limit (excluded)</summary>
-        /// <returns>The sequence into a List object</returns>
-        public static List<int> Range(int start, int limit)
-        {
-            var seq = new List<int>();
-            for (int i = start; i != limit; i += Math.Sign(limit)) seq.Add(i);
-            return seq;
-        }
+        /// <returns>The sequence into a IEnumerable object</returns>
+        public static IEnumerable<int> Range(int start, int limit) => Range(start, limit, Math.Sign(limit - start));
         /// <name>Range</name>
         /// <code>Range(int start, int limit, int step)</code>
         /// <param name="start">The integer from which the sequence starts</param>
         /// <param name="limit">The extreme value at which the sequence stops</param>
         /// <param name="step">The increment</param>
         /// <summary>Generates a sequence from start to limit (excluded), incrementng by step</summary>
-        /// <returns>The sequence into a List object</returns>
-        public static List<int> Range(int start, int limit, int step)
+        /// <returns>The sequence into a IEnumerable object</returns>
+        public static IEnumerable<int> Range(int start, int limit, int step)
         {
-            var seq = new List<int>();
+            //var seq = new List<int>();
             if (Math.Sign(step) == Math.Sign(limit - start))
             {
                 for (int i = start; Math.Sign(limit - i) == Math.Sign(limit - start); i += step)
-                    seq.Add(i);
+                    yield return i;
             }
-            return seq;
         }
     }
     ///<name>NumericalStringComparer</name>

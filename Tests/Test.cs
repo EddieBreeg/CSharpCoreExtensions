@@ -5,12 +5,19 @@ using Xunit;
 
 namespace Tests
 {
+    //public static class Program
+    //{ 
+    //    static void Main()
+    //    {
+    //        Console.WriteLine(InputHandler.IntInput("x: "));
+    //    }
+    //}
     public class CoreTests
     {
         [Fact]
         static void Range1()
         {
-            Assert.Equal(new List<int>() { 0, 1, 2, 3, 4 }, Core.Range(5));
+            Assert.Equal(new List<int>() { 0, 1, 2, 3, 4 }, Core.Range(5).ToList());
         }
         [Fact]
         static void Range2()
@@ -71,7 +78,7 @@ namespace Tests
                 new List<int>(){3,4,5},
                 new List<int>(){6,7,8}
             };
-            Assert.Equal(Core.Range(9).Split(3), expected);
+            Assert.Equal(Core.Range(9).ToList().Split(3), expected);
         }
         [Fact]
         static void Split2()
@@ -82,7 +89,7 @@ namespace Tests
                 new List<int>(){3,4,5},
                 new List<int>(){6,7,8, 9}
             };
-            Assert.Equal(Core.Range(10).Split(3), expected);
+            Assert.Equal(Core.Range(10).ToList().Split(3), expected);
         }
         [Fact]
         static void WithoutIndex1()
@@ -166,7 +173,7 @@ namespace Tests
         [Fact]
         static void Test()
         {
-            var lst = Core.Range(10);
+            var lst = Core.Range(10).ToList();
             Assert.True(lst != lst.DeepCopy());
         }
     }
