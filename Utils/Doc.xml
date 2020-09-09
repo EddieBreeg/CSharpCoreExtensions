@@ -162,6 +162,16 @@
             <remarks>This method is internal and shouldn't be used directly. It is only there to be used by the 
             CompareNumerically method</remarks>
         </member>
+        <member name="M:System.Linq.StringExtensions.Indent(System.String,System.Int32)">
+            <name>Indent</name>
+            <code>Indent(this string str, int level = 4)</code>
+            <summary>
+            Pads each line of `str` by adding `level` spaces to its left
+            </summary>
+            <param name="str">The string to indent</param>
+            <param name="level">The number of spaces to add</param>
+            <returns>The indented version of `str`</returns>
+        </member>
         <member name="M:System.Linq.StringExtensions.CompareNumerically(System.String,System.String)">
             <name>CompareNumerically</name>
             <code>CompareNumerically(this string str, string other)</code>

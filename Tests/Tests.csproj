@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Configurations>Debug;Release;Tests</Configurations>
-    <!--<StartupObject>Tests.Program</StartupObject>-->
+    <StartupObject>Tests.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,13 +5,16 @@ using Xunit;
 
 namespace Tests
 {
-    //public static class Program
-    //{ 
-    //    static void Main()
-    //    {
-    //        Console.WriteLine(InputHandler.IntInput("x: "));
-    //    }
-    //}
+    public static class Program
+    {
+        static void Main()
+        {
+            var tree = new DataTree<int>(new Node<int>(0));
+            tree[new int[] { 0, 1 }] = new Node<int>();
+            tree[new int[] { 0, 1, 2 }] = new Node<int>();
+            Console.WriteLine(tree[new int[] { 0, 1}]);
+        }
+    }
     public class CoreTests
     {
         [Fact]
@@ -66,6 +69,13 @@ namespace Tests
             List<string> lst = new List<string>() { "foo23", "foo10" };
             Assert.Equal(lst.Sorted(new NumericalStringComparer()), new List<string>() { "foo10", "foo23" });
         }
+    }
+    public class StringExtensionsTests
+    {
+        [Fact]
+        static void IndentTest() => Assert.Equal("    a string", "a string".Indent());
+        [Fact]
+        static void IndentTests2() => Assert.Equal("  kek\n  epico", "kek\nepico".Indent(2));
     }
     public class ListExtensionsTests
     {

@@ -119,7 +119,13 @@ namespace System.Linq
                 if (a[i] != b[i]) return a[i].CompareTo(b[i]);
             return a.Length.CompareTo(b.Length);
         }
-
+        public static T[] GetRange<T>(this T[] array, int index, int count)
+        {
+            var result = new T[count];
+            for (int i = 0; i < count; i++)
+                result[i] = array[index + i];
+            return result;
+        }
     }
     /// <name>StringExtensions</name>
     /// <summary>
@@ -173,6 +179,20 @@ namespace System.Linq
                 }
             }
         }
+        /// <name>Indent</name>
+        /// <code>Indent(this string str, int level = 4)</code>
+        /// <summary>
+        /// Pads each line of `str` by adding `level` spaces to its left
+        /// </summary>
+        /// <param name="str">The string to indent</param>
+        /// <param name="level">The number of spaces to add</param>
+        /// <returns>The indented version of `str`</returns>
+        public static string Indent(this string str, int level = 4)
+        {
+            var indent = "";
+            for (int i = 0; i< level; i++) indent += ' ';
+            return string.Join('\n', str.Split('\n').Select(x => indent + x));
+        }
         /// <name>CompareNumerically</name>
         /// <code>CompareNumerically(this string str, string other)</code>
         /// <summary>
@@ -192,6 +212,7 @@ namespace System.Linq
             return a.Count().CompareTo(b.Count());
         }
     }
+   
     /// <name>ObjectExtensions</name>
     /// <summary>
     /// A collection of extension methods for any type of object
